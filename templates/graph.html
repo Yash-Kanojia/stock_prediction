@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Prediction</title>
+</head>
+
+<style>
+    h1 {text-align: center}
+</style>
+
+<body>
+    {% block content %}
+    <h1>Graph for {{stock}} </h1>
+
+    <p><a href="/">Return to Home</a></p>
+    {% if predicted_price %}
+    <p>Predicted value is <b>{{predicted_price}}</b></p>
+    {% endif %}
+    
+    <div style="width: 100%; display: table;">
+        <div style="display: table-row">
+            <div style="width: 50%; display: table-cell;">             
+                {% if graph %}
+                {{ graph|safe }}
+                {% else %}
+                <p>No graph was provided.</p>
+                {% endif %}
+            </div>
+
+            <div style="display: table-cell;">
+             
+                {% if graph2 %}
+                {{ graph2|safe }}
+                {% else %}
+                <p>No Candle Stick graph was provided.</p>
+                {% endif %}
+      
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+</body>
+</html>
